@@ -26,7 +26,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: (
         <LayoutDashboardIcon
         />
@@ -34,7 +34,7 @@ const data = {
     },
     {
       title: "Lifecycle",
-      url: "#",
+      url: "/lifecycle",
       icon: (
         <ListIcon
         />
@@ -42,7 +42,7 @@ const data = {
     },
     {
       title: "Analytics",
-      url: "#",
+      url: "/analytics",
       icon: (
         <ChartBarIcon
         />
@@ -50,7 +50,7 @@ const data = {
     },
     {
       title: "Projects",
-      url: "#",
+      url: "/projects",
       icon: (
         <FolderIcon
         />
@@ -58,7 +58,7 @@ const data = {
     },
     {
       title: "Team",
-      url: "#",
+      url: "/team",
       icon: (
         <UsersIcon
         />
@@ -109,7 +109,7 @@ const data = {
         <FileTextIcon
         />
       ),
-      url: "#",
+      url: "/prompts",
       items: [
         {
           title: "Active Proposals",
@@ -125,7 +125,7 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: (
         <Settings2Icon
         />
@@ -133,7 +133,7 @@ const data = {
     },
     {
       title: "Get Help",
-      url: "#",
+      url: "/get-help",
       icon: (
         <CircleHelpIcon
         />
@@ -141,7 +141,7 @@ const data = {
     },
     {
       title: "Search",
-      url: "#",
+      url: "/search",
       icon: (
         <SearchIcon
         />
@@ -151,7 +151,7 @@ const data = {
   documents: [
     {
       name: "Data Library",
-      url: "#",
+      url: "/data-library",
       icon: (
         <DatabaseIcon
         />
@@ -159,7 +159,7 @@ const data = {
     },
     {
       name: "Reports",
-      url: "#",
+      url: "/reports",
       icon: (
         <FileChartColumnIcon
         />
@@ -167,7 +167,7 @@ const data = {
     },
     {
       name: "Word Assistant",
-      url: "#",
+      url: "/word-assistant",
       icon: (
         <FileIcon
         />
@@ -186,7 +186,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               render={<a href="#" />}
             >
               <CommandIcon className="size-5!" />
-              <span className="text-base font-semibold">Acme Inc.</span>
+              <span className="text-base font-semibold">Niramay Hospital.</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -197,7 +197,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser username={data.user} />
       </SidebarFooter>
     </Sidebar>
   )
