@@ -1,10 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
+import { NavMain, NavGroup } from "@/components/nav-main"
 import { NavUser } from "@/components/nav-user"
 import {
   Sidebar,
@@ -15,167 +12,144 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
+import {
+  LayoutDashboardIcon,
+  UsersIcon,
+  UserCheckIcon,
+  Building2Icon,
+  CalendarDaysIcon,
+  BedDoubleIcon,
+  HotelIcon,
+  PillIcon,
+  BoxesIcon,
+  ShoppingCartIcon,
+  ReceiptIcon,
+  BarChart3Icon,
+  ShieldAlertIcon,
+  UserCogIcon,
+  CommandIcon,
+} from "lucide-react"
+import Link from "next/link"
 
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+const navGroups: NavGroup[] = [
+  {
+    label: "Main",
+    items: [
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: <LayoutDashboardIcon className="size-4" />,
+      },
+    ],
   },
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: (
-        <LayoutDashboardIcon
-        />
-      ),
-    },
-    {
-      title: "Lifecycle",
-      url: "/lifecycle",
-      icon: (
-        <ListIcon
-        />
-      ),
-    },
-    {
-      title: "Analytics",
-      url: "/analytics",
-      icon: (
-        <ChartBarIcon
-        />
-      ),
-    },
-    {
-      title: "Projects",
-      url: "/projects",
-      icon: (
-        <FolderIcon
-        />
-      ),
-    },
-    {
-      title: "Team",
-      url: "/team",
-      icon: (
-        <UsersIcon
-        />
-      ),
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: (
-        <CameraIcon
-        />
-      ),
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: (
-        <FileTextIcon
-        />
-      ),
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: (
-        <FileTextIcon
-        />
-      ),
-      url: "/prompts",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "/settings",
-      icon: (
-        <Settings2Icon
-        />
-      ),
-    },
-    {
-      title: "Get Help",
-      url: "/get-help",
-      icon: (
-        <CircleHelpIcon
-        />
-      ),
-    },
-    {
-      title: "Search",
-      url: "/search",
-      icon: (
-        <SearchIcon
-        />
-      ),
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "/data-library",
-      icon: (
-        <DatabaseIcon
-        />
-      ),
-    },
-    {
-      name: "Reports",
-      url: "/reports",
-      icon: (
-        <FileChartColumnIcon
-        />
-      ),
-    },
-    {
-      name: "Word Assistant",
-      url: "/word-assistant",
-      icon: (
-        <FileIcon
-        />
-      ),
-    },
-  ],
-}
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  {
+    label: "Clinical & OPD",
+    items: [
+      {
+        title: "Patients",
+        url: "/patients",
+        icon: <UsersIcon className="size-4" />,
+      },
+      {
+        title: "Doctors",
+        url: "/doctors",
+        icon: <UserCheckIcon className="size-4" />,
+      },
+      {
+        title: "Departments",
+        url: "/department",
+        icon: <Building2Icon className="size-4" />,
+      },
+      {
+        title: "Appointments",
+        url: "/clinical/appointments",
+        icon: <CalendarDaysIcon className="size-4" />,
+      },
+    ],
+  },
+  {
+    label: "Inpatient (IPD)",
+    items: [
+      {
+        title: "Admissions",
+        url: "/inpatient/admissions",
+        icon: <HotelIcon className="size-4" />,
+      },
+      {
+        title: "Rooms & Rates",
+        url: "/room",
+        icon: <Building2Icon className="size-4" />,
+      },
+      {
+        title: "Beds Management",
+        url: "/beds",
+        icon: <BedDoubleIcon className="size-4" />,
+      },
+    ],
+  },
+  {
+    label: "Pharmacy & Stock",
+    items: [
+      {
+        title: "Pharmacy Catalog",
+        url: "/pharmacy",
+        icon: <PillIcon className="size-4" />,
+      },
+      {
+        title: "Medicines List",
+        url: "/pharmacy/medicines",
+        icon: <PillIcon className="size-4" />,
+      },
+      {
+        title: "Inventory Batches",
+        url: "/pharmacy/inventory",
+        icon: <BoxesIcon className="size-4" />,
+      },
+      {
+        title: "Point of Sale",
+        url: "/pharmacy/sales",
+        icon: <ShoppingCartIcon className="size-4" />,
+      },
+    ],
+  },
+  {
+    label: "Finance & Accounting",
+    items: [
+      {
+        title: "Invoices & Payments",
+        url: "/billing/invoices",
+        icon: <ReceiptIcon className="size-4" />,
+      },
+      {
+        title: "Operational Reports",
+        url: "/reports",
+        icon: <BarChart3Icon className="size-4" />,
+      },
+    ],
+  },
+  {
+    label: "Administration",
+    items: [
+      {
+        title: "Staff Users",
+        url: "/admin/users",
+        icon: <UserCogIcon className="size-4" />,
+      },
+      {
+        title: "Audit Log Trail",
+        url: "/admin/audit-logs",
+        icon: <ShieldAlertIcon className="size-4" />,
+      },
+    ],
+  },
+]
+
+export function AppSidebar({
+  user,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & {
+  user?: { name: string; email: string; avatar?: string }
+}) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -183,21 +157,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               className="data-[slot=sidebar-menu-button]:p-1.5!"
-              render={<a href="#" />}
+              render={<Link href="/dashboard" />}
             >
               <CommandIcon className="size-5!" />
-              <span className="text-base font-semibold">Niramay Hospital.</span>
+              <span className="text-base font-semibold">Niramay Hospital</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+      <SidebarContent className="px-2">
+        <NavMain groups={navGroups} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser username={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
   )

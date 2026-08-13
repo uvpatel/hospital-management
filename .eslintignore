@@ -1,0 +1,6 @@
+src/components/chart-area-interactive.tsx
+src/components/ui/background-lines.tsx
+src/components/ui/noise-background.tsx
+src/hooks/use-mobile.ts
+src/components/nav-main.tsx
+src/components/nav-user.tsx
